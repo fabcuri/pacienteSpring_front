@@ -1,0 +1,41 @@
+<h5>Conulta de Pacientes</h5>
+<p>Listagem de pacientes cadastrados</p>
+
+<!--a tabela vai ter cabecalho, corpo e rodapé-->
+<table class="table table-hover table-sm">
+  <thead>
+    <tr>
+      <td>Nome do Paciente</td>
+      <td>Cpf</td>
+      <td>DataNascimento</td>
+      <td>Sexo</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of pacientes">
+      <td>{{ p.nome }}</td>
+      <td>{{ p.cpf  }}</td>
+      <td>{{ p.dataNascimento }}</td>
+      <td>{{ p.sexo }}</td>
+     
+
+      <td>
+        <button
+          class="btn btn-primary"
+          [routerLink]="['/editar-pacientes', p.idPaciente]"
+        >
+          Editar
+        </button>
+        &nbsp;
+        <button class="btn btn-danger" (click)="excluir(p.idPaciente)">
+          Excluir
+        </button>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="6">Total de registros :{{ pacientes.length }}</td>
+    </tr>
+  </tfoot>
+</table>

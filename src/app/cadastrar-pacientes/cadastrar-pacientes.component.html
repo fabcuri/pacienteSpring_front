@@ -1,0 +1,104 @@
+<h5>Cadastro de Paciente</h5>
+
+<p>Preencha os campos para incluir um paciente.</p>
+
+
+
+<form [formGroup]="formCadastro" (ngSubmit)="onSubmit()">
+
+    <div *ngIf="mensagem" class="mb-3 alert alert-primary">
+        <strong>{{mensagem}}</strong>
+    </div>
+
+    <div class="row mb-3">
+
+        <div class="col-md-6">
+
+            <label>Nome do Paciente:</label>
+
+            <input type="text" class="form-control" formControlName="nome" />
+
+            <div class="text-danger" *ngIf="form.nome.touched && form.nome.invalid">
+
+                <span *ngIf="form.nome.errors.required">
+
+                    Porfavor, informe o nome do paciente.
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <label>CPF: </label>
+
+            <input type="text" class="form-control" formControlName="cpf" />
+
+            <div class="text-danger" *ngIf="form.cpf.touched && form.cpf.invalid">
+
+                <span *ngIf="form.cpf.errors.required">
+
+                    Porfavor, informe o cpf do paciente.
+
+                </span>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+
+            <label>Data de Nascimento:</label>
+
+            <input type="text" class="form-control" formControlName="dataNascimento" />
+            <div class="text-danger" *ngIf="form.dataNascimento.touched && form.dataNascimento.invalid">
+
+                <span *ngIf="form.dataNascimento.errors.required">
+
+                    Porfavor, informe a data de nascimento do paciente.
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row mb-3">
+
+        <div class="col-md-12">
+
+            <label>Sexo:</label>
+
+            <input type="text" class="form-control" formControlName="sexo" />
+            <div class="text-danger" *ngIf="form.sexo.touched && form.sexo.invalid">
+
+                <span *ngIf="form.sexo.errors.required">
+
+                    Porfavor, informe o sexo do paciente.
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row mb-3">
+
+        <div class="col-md-12">
+
+
+
+            <input type="submit" [disabled]="!formCadastro.valid" class="btn btn-success" value="Realizar Cadastro" />
+
+        </div>
+
+    </div>
+
+
+
+</form>

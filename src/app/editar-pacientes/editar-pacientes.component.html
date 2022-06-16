@@ -1,0 +1,62 @@
+<h5>Edição de Pacientes</h5>
+<p>Utilize os campos para alterar os dados de um paciente</p>
+
+<form [formGroup]="formEdicao" (ngSubmit)="onSubmit()">
+  <div *ngIf="mensagem" class="mb-3 alert alert-primary">
+    <strong>{{mensagem}}</strong>
+  </div>
+  <!--hidden ocultar, para nao permitir que edit é read-->
+  <!--campo oculto -->
+  <input type="hidden" formControlName="idPaciente" />
+
+  <div class="row mb-3">
+    <!--mb margem inferior -->
+    <div class="col-md-6">
+      <!-- 6 colunas-->
+      <label>Nome do Paciente:</label>
+      <input type="text" class="form-control" formControlName="nome" />
+      <div class="text-danger" *ngIf="form.nome.touched && form.nome.invalid">
+        <span *ngIf="form.nome.errors.required">
+          Por favor insira o nome do paciente.
+        </span>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <!-- 6 colunas-->
+      <label> Cpf :</label>
+      <input type="text" class="form-control" formControlName="cpf" />
+      <div class="text-danger" *ngIf="form.cpf.touched && form.cpf.invalid">
+        <span *ngIf="form.cpf.errors.required">
+          Por favor insira o cpf do paciente.
+        </span>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <!-- 6 colunas-->
+      <label>Data de Nascimento</label>
+      <input type="text" class="form-control" formControlName="dataNascimento" />
+      <div class="text-danger" *ngIf="form.dataNascimento.touched && form.dataNascimento.invalid">
+        <span *ngIf="form.dataNascimento.errors.required">
+          Por favor insira a data de nascimento do paciente.
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <label>Sexo:</label>
+      <input type="text" class="form-control" formControlName="sexo" />
+      <div class="text-danger" *ngIf="form.sexo.touched && form.sexo.invalid">
+        <span *ngIf="form.sexo.errors.required">
+          Por favor insira o sexo do Paciente.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <input type="submit" [disabled]="!formEdicao.valid" class="btn btn-success" value="Salvar Alterações" />
+    </div>
+  </div>
+</form>
